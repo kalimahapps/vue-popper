@@ -1,5 +1,4 @@
 # vue-popper
-# [Vue Icons](https://kalimah-apps.github.io/vue-popper/)
 [![npm](https://img.shields.io/npm/v/@kalimahapps/vue-popper.svg)](https://www.npmjs.com/package/@kalimahapps/vue-popper) 
 [![npm](https://img.shields.io/npm/dt/@kalimahapps/vue-popper.svg)](https://www.npmjs.com/package/@kalimahapps/vue-popper)
 ![vue-3](https://img.shields.io/badge/vue-3-%2342b883)
