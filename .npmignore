@@ -1,0 +1,9 @@
+node_modules
+*.tgz
+*.log
+LICENSE_HEADER
+.babelrc
+
+coverage/
+.vscode
+/src/test
