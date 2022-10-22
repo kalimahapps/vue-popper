@@ -1,6 +1,6 @@
 {
   "name": "@kalimahapps/vue-popper",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "sideEffects": false,
   "repository": {
     "type": "git",
@@ -14,6 +14,7 @@
     "dev": "vite",
     "build": "run-p type-check build-only",
     "test": "vitest",
+    "update:snapshots": "vitest -u",
     "coverage": "vitest run --coverage"
   },
   "exports": {

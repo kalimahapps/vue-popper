@@ -89,13 +89,16 @@ app.component('VuePopper', VuePopper).mount('#app');
 
 
 ## Default Popper Options
+These are the default popper options that will be passed to the component. If you want to override these or add new ones, you can pass your own options to the `popper-options` prop. (See the example at the top)
+
 ```js
 {
+  placement: 'bottom',
   modifiers: [
     {
       name: 'offset',
       options: {
-        offset: [0, 12],
+        offset: [0, 8],
       },
     },
     {
@@ -105,9 +108,9 @@ app.component('VuePopper', VuePopper).mount('#app');
       },
     },
     {
-      name: 'flip',
+      name: 'arrow',
       options: {
-        fallbackPlacements: ['top', 'bottom', 'left', 'right'],
+        padding: 5,
       },
     },
   ],
@@ -119,6 +122,14 @@ app.component('VuePopper', VuePopper).mount('#app');
 | ------- | ----------------------------------------- |
 | default | The element that will trigger the tooltip |
 | content | The content of the tooltip                |
+
+### Slots Props
+These slots props are passed to content slot. 
+| Name      | Description                            |
+| --------- | -------------------------------------- |
+| is-opened | Current Status of the tooltip          |
+| close     | A function that will close the tooltip |
+
 
 ## Events
 | Name   | Description                        |
@@ -147,6 +158,8 @@ To style the tooltip, you can customize the following css variables:
 - 1.0.0
   - Initial Release
 
+## Links
+- [Popper.js](https://popper.js.org/)
 ## License
 
 This project is licensed under the MIT License

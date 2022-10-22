@@ -17,8 +17,7 @@
     </div>
     <Transition name="fade">
       <div class="popper-content" role="tooltip" ref="tooltipElement" v-show="isOpened">
-        <slot name="content" />
-        {{ showArrow }}
+        <slot name="content" :close="closeWithDelay" :isOpened="isOpened" />
         <div id="arrow" data-popper-arrow v-show="showArrow" />
       </div>
     </Transition>
