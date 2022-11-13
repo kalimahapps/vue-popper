@@ -3,14 +3,20 @@
 [![npm](https://img.shields.io/npm/dt/@kalimahapps/vue-popper.svg)](https://www.npmjs.com/package/@kalimahapps/vue-popper)
 ![vue-3](https://img.shields.io/badge/vue-3-%2342b883)
 
+[![Twitter Follow](https://img.shields.io/twitter/follow/KalimahApps?style=for-the-badge)](https://twitter.com/KalimahApps)
+
 A tooltip component for vue3 using popperjs
 
 ## Installation
 ### NPM
-`npm install @kalimahapps/vue-popper`
+```bash
+npm install @kalimahapps/vue-popper
+```
 
 ### PNPM
-`pnpm add @kalimahapps/vue-popper`
+```bash
+pnpm add @kalimahapps/vue-popper
+```
 
 ## Usage
 ### Local Registration
@@ -160,6 +166,14 @@ To style the tooltip, you can customize the following css variables:
 
 ## Links
 - [Popper.js](https://popper.js.org/)
-## License
 
+## Other projects
+### [Vue Icons](https://www.npmjs.com/package/@kalimahapps/vue-icons)
+50,000+ SVG icons from popular icon sets that you can add seamlessly to your vue projects
+
+### [Vite inherit attrs](https://www.npmjs.com/package/vite-plugin-vue-setup-inherit-attrs)
+A vite plugin that adds support for inheritAttrs in vue-setup
+
+
+## License
 This project is licensed under the MIT License

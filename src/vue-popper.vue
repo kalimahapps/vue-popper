@@ -18,7 +18,7 @@
     <Transition name="fade">
       <div class="popper-content" role="tooltip" ref="tooltipElement" v-show="isOpened">
         <slot name="content" :close="closeWithDelay" :isOpened="isOpened" />
-        <div id="arrow" data-popper-arrow v-show="showArrow" />
+        <div data-popper-arrow="true" v-show="showArrow" />
       </div>
     </Transition>
   </div>
@@ -291,19 +291,19 @@ defineExpose({
   color: var(--vue-popper-text-color, #000);
   border: var(--vue-popper-border, 0px solid transparent);
 
-  &[data-popper-placement^='top'] > #arrow {
+  &[data-popper-placement^='top'] > [data-popper-arrow] {
     bottom: -4px;
   }
 
-  &[data-popper-placement^='bottom'] > #arrow {
+  &[data-popper-placement^='bottom'] > [data-popper-arrow] {
     top: -4px;
   }
 
-  &[data-popper-placement^='left'] > #arrow {
+  &[data-popper-placement^='left'] > [data-popper-arrow] {
     right: -4px;
   }
 
-  &[data-popper-placement^='right'] > #arrow {
+  &[data-popper-placement^='right'] > [data-popper-arrow] {
     left: -4px;
   }
 }
@@ -318,7 +318,7 @@ defineExpose({
   opacity: 0;
 }
 
-#arrow {
+[data-popper-arrow] {
   position: absolute;
   width: 8px;
   height: 8px;
