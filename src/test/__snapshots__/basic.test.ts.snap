@@ -5,7 +5,7 @@ exports[`VuePopper > should render correctly 1`] = `
   <div aria-describedby=\\"tooltip\\" class=\\"trigger-element\\"></div>
   <transition-stub name=\\"fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
     <div class=\\"popper-content\\" role=\\"tooltip\\" style=\\"display: none; position: absolute; left: 0px; top: 0px; margin: 0px;\\">
-      <div id=\\"arrow\\" data-popper-arrow=\\"\\" style=\\"position: absolute;\\"></div>
+      <div data-popper-arrow=\\"true\\" style=\\"position: absolute;\\"></div>
     </div>
   </transition-stub>
 </div>"

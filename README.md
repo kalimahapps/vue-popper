@@ -22,7 +22,7 @@ pnpm add @kalimahapps/vue-popper
 ### Local Registration
 ```vue
 <template>
-  <VuePopper hover :popper-options="popperOptions">
+  <VuePopper hover placement="top">
     <template #default>
         <button>Hover me</button>
     </template>
@@ -38,10 +38,6 @@ pnpm add @kalimahapps/vue-popper
 
 <script lang="ts" setup>
 import VuePopper from '@kalimahapps/vue-popper';
-
-const popperOptions = {
-	placement: 'top',
-};
 </script>
 
 <style lang="scss" scoped></style>
@@ -51,7 +47,7 @@ const popperOptions = {
 ```vue
 // your-component.vue
 <template>
-  <vue-popper hover :popper-options="popperOptions">
+  <vue-popper hover placement="top">
     <template #default>
         <button>Hover me</button>
     </template>
@@ -64,11 +60,6 @@ const popperOptions = {
   </vue-popper>
 </template>
 
-<script lang="ts" setup>
-const popperOptions = {
-	placement: 'top',
-};
-</script>
 ```
     
 ```js
@@ -83,19 +74,21 @@ app.component('VuePopper', VuePopper).mount('#app');
 ```
 
 ## Props
-| Name                  | Default   | Description                                                                                     |
-| --------------------- | --------- | ----------------------------------------------------------------------------------------------- |
-| show-arrow            | `true`    | Whether to show the arrow                                                                       |
-| hover                 | `false`   | Trigger element on hover                                                                        |
-| disable-click-outside | `false`   | Disable clicking outside to close                                                               |
-| open-delay            | `0`       | How many milliseconds to wait before opening the tooltip                                        |
-| close-delay           | `0`       | How many milliseconds to wait before closing the tooltip                                        |
-| interactive           | `false`   | Whether to interact with tooltip when hover is true                                             |
-| popper-options        | See below | An object of popper options. This will be passed to the third argument of createPopper function |
+| Name                  | Default    | Description                                                            |
+| --------------------- | ---------- | ---------------------------------------------------------------------- |
+| show-arrow            | `true`     | Whether to show the arrow                                              |
+| hover                 | `false`    | Trigger element on hover                                               |
+| disable-click-outside | `false`    | Disable clicking outside to close                                      |
+| open-delay            | `0`        | How many milliseconds to wait before opening the tooltip               |
+| close-delay           | `0`        | How many milliseconds to wait before closing the tooltip               |
+| interactive           | `false`    | Whether to interact with tooltip when hover is true                    |
+| placement             | `bottom`   | The placement of the tooltip.                                          |
+| strategy              | `absolute` | The strategy to use to position the tooltip. Can be absolute or fixed. |
+| modifiers             | `[]`       | The modifiers to override the default modifies.                        |
 
 
 ## Default Popper Options
-These are the default popper options that will be passed to the component. If you want to override these or add new ones, you can pass your own options to the `popper-options` prop. (See the example at the top)
+These are the default popper options that will be passed to the component. If you want to override these or add new ones, you can pass your custom options to the each respective prop. (See the example at the top)
 
 ```js
 {
@@ -161,6 +154,10 @@ To style the tooltip, you can customize the following css variables:
 | popper | The popper instance. You can use this to call popper's instance methods |
 
 ## Version History
+- 1.0.4
+  - Add popper options as individual props and deprecate the popperOptions prop
+  - Fix nested tooltip bug
+  
 - 1.0.0
   - Initial Release
 

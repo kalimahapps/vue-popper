@@ -25,9 +25,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, watch, onUnmounted, computed } from 'vue';
+import { ref, onMounted, watch, onUnmounted, computed, PropType } from 'vue';
 import { onClickOutside, useDebounceFn } from '@vueuse/core';
-import { Instance, createPopper } from '@popperjs/core';
+import { Instance, createPopper, PositioningStrategy, Placement } from '@popperjs/core';
 
 const props = defineProps({
   /**
@@ -96,6 +96,32 @@ const props = defineProps({
   },
 
   /**
+   * Set the strategy used to position the popper
+   * 
+   * @values absolute | fixed
+   */
+  strategy: {
+    type: String as PropType<PositioningStrategy>,
+    default: 'absolute',
+  },
+
+  /**
+   * Set the placement of the popper
+   */
+  placement:{
+    type: String as PropType<Placement>,
+    default: 'bottom',
+  },
+
+  /**
+   * Set the modifiers of the popper
+   */
+  modifiers: {
+    type: Array,
+    default: () => [],
+  },
+  
+  /**
    * Popper options to merge with default options
    *
    * @see https://popper.js.org/docs/v2/
@@ -107,6 +133,11 @@ const props = defineProps({
 });
 
 const emit = defineEmits(['opened', 'closed']);
+
+// Deprecate popperOptions in favor of multiple props
+if (Object.keys(props.popperOptions).length > 0) {
+  console.warn('@kalimahapps/vue-popper: popperOptions is deprecated. Use the individual props instead.');
+}
 
 /**
  * Set default popper default options
@@ -131,6 +162,12 @@ const popperDefaultOptions = {
         fallbackPlacements: ['top', 'bottom', 'left', 'right'],
       },
     },
+    {
+			name: 'arrow',
+			options: {
+				element: ':scope > [data-popper-arrow]',
+			},
+		},
   ],
 };
 
@@ -207,6 +244,9 @@ const toggleTooltip = (status = '') => {
 const getPopperOptions = computed(() => {
   return {
     ...popperDefaultOptions,
+    strategy: props.strategy,
+    placement: props.placement,
+    modifiers: [...popperDefaultOptions.modifiers, ...props.modifiers],
     ...props.popperOptions,
   };
 });
