@@ -1,13 +1,26 @@
-# vue-popper
-[![npm](https://img.shields.io/npm/v/@kalimahapps/vue-popper.svg)](https://www.npmjs.com/package/@kalimahapps/vue-popper) 
-[![npm](https://img.shields.io/npm/dt/@kalimahapps/vue-popper.svg)](https://www.npmjs.com/package/@kalimahapps/vue-popper)
-![vue-3](https://img.shields.io/badge/vue-3-%2342b883)
+<h1 style="text-align: center;">VuePopper </h1>
 
-[![Twitter Follow](https://img.shields.io/twitter/follow/KalimahApps?style=for-the-badge)](https://twitter.com/KalimahApps)
+<p align="center">
+Vue3 popper component
+</p>
 
-A tooltip component for vue3 using popperjs
+<p align="center">
+<a target="_blank" href="https://www.npmjs.com/package/@kalimahapps/vue-popper">
+  <img src="https://img.shields.io/npm/v/@kalimahapps/vue-popper.svg">
+</a>
+<a target="_blank" href="https://www.npmjs.com/package/@kalimahapps/vue-popper">
+  <img src="https://img.shields.io/npm/dt/@kalimahapps/vue-popper.svg">
+</a>
+<img src="https://img.shields.io/badge/vue-3-%2342b883">
+</p>
+<p align="center">
+<a target=_blank href="https://twitter.com/KalimahApps">
+  <img src="https://img.shields.io/twitter/follow/KalimahApps?style=for-the-badge">
+</a>
+</p>
+<br>
 
-## Installation
+## 💽 Installation
 ### NPM
 ```bash
 npm install @kalimahapps/vue-popper
@@ -18,7 +31,7 @@ npm install @kalimahapps/vue-popper
 pnpm add @kalimahapps/vue-popper
 ```
 
-## Usage
+## 🔧 Usage
 ### Local Registration
 ```vue
 <template>
@@ -73,7 +86,7 @@ const app = createApp(App);
 app.component('VuePopper', VuePopper).mount('#app');
 ```
 
-## Props
+## 🪛 Props
 | Name                  | Default    | Description                                                            |
 | --------------------- | ---------- | ---------------------------------------------------------------------- |
 | show-arrow            | `true`     | Whether to show the arrow                                              |
@@ -116,7 +129,7 @@ These are the default popper options that will be passed to the component. If yo
 }
 ```
 
-## Slots
+## 🧵 Slots
 | Name    | Description                               |
 | ------- | ----------------------------------------- |
 | default | The element that will trigger the tooltip |
@@ -136,7 +149,7 @@ These slots props are passed to content slot.
 | opened | Emitted when the tooltip is opened |
 | closed | Emitted when the tooltip is closed |
 
-## Styling
+## 🎨 Styling
 To style the tooltip, you can customize the following css variables:
 | Name                       | Default Value                                                                                                          | Description                                   |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
@@ -153,7 +166,7 @@ To style the tooltip, you can customize the following css variables:
 | ------ | ----------------------------------------------------------------------- |
 | popper | The popper instance. You can use this to call popper's instance methods |
 
-## Version History
+## 🧮 Version History
 - 1.0.4
   - Add popper options as individual props and deprecate the popperOptions prop
   - Fix nested tooltip bug
@@ -161,10 +174,10 @@ To style the tooltip, you can customize the following css variables:
 - 1.0.0
   - Initial Release
 
-## Links
+## 🔗 Links
 - [Popper.js](https://popper.js.org/)
 
-## Other projects
+## 🏗️ Other projects
 ### [Vue Icons](https://www.npmjs.com/package/@kalimahapps/vue-icons)
 50,000+ SVG icons from popular icon sets that you can add seamlessly to your vue projects
 
@@ -172,5 +185,5 @@ To style the tooltip, you can customize the following css variables:
 A vite plugin that adds support for inheritAttrs in vue-setup
 
 
-## License
+## ⚖️ License
 This project is licensed under the MIT License
