@@ -1,4 +1,4 @@
-<h1 style="text-align: center;">VuePopper </h1>
+<h1 align="center">VuePopper</h1>
 
 <p align="center">
 Vue3 popper component
