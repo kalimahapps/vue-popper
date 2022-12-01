@@ -15,19 +15,24 @@
     >
       <slot />
     </div>
-    <Transition name="fade">
-      <div class="popper-content" role="tooltip" ref="tooltipElement" v-show="isOpened">
-        <slot name="content" :close="closeWithDelay" :isOpened="isOpened" />
-        <div data-popper-arrow="true" v-show="showArrow" />
+    <Transition :name="getTransitionNames.outer">
+      <div class="popper-content-wrapper" role="tooltip" ref="tooltipElement" v-show="isOpened">
+        <Transition :name="getTransitionNames.inner">
+          <div class="popper-content" v-show="isOpened">
+            <slot name="content" :close="closeWithDelay" :isOpened="isOpened" />
+            <div data-popper-arrow="true" v-show="showArrow" />
+          </div>
+        </Transition>
       </div>
     </Transition>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, watch, onUnmounted, computed, PropType } from 'vue';
+import { ref, onMounted, watch, onUnmounted, computed, PropType, toRef } from 'vue';
 import { onClickOutside, useDebounceFn } from '@vueuse/core';
-import { Instance, createPopper, PositioningStrategy, Placement } from '@popperjs/core';
+import type { Instance, PositioningStrategy, Placement } from '@popperjs/core';
+import { createPopper } from '@popperjs/core';
 
 const props = defineProps({
   /**
@@ -97,7 +102,7 @@ const props = defineProps({
 
   /**
    * Set the strategy used to position the popper
-   * 
+   *
    * @values absolute | fixed
    */
   strategy: {
@@ -108,9 +113,9 @@ const props = defineProps({
   /**
    * Set the placement of the popper
    */
-  placement:{
+  placement: {
     type: String as PropType<Placement>,
-    default: 'bottom',
+    default: 'right',
   },
 
   /**
@@ -120,7 +125,25 @@ const props = defineProps({
     type: Array,
     default: () => [],
   },
-  
+
+  /**
+   * Set the type of animation
+   *
+   * @values none, fade, fade-slide
+   */
+  animation: {
+    type: String,
+    default: 'fade-slide',
+  },
+
+  /**
+   * Animation duration in milliseconds
+   */
+  animationDuration: {
+    type: Number,
+    default: 300,
+  },
+
   /**
    * Popper options to merge with default options
    *
@@ -163,11 +186,11 @@ const popperDefaultOptions = {
       },
     },
     {
-			name: 'arrow',
-			options: {
-				element: ':scope > [data-popper-arrow]',
-			},
-		},
+      name: 'arrow',
+      options: {
+        element: ':scope > .popper-content > [data-popper-arrow]',
+      },
+    },
   ],
 };
 
@@ -184,9 +207,70 @@ const tooltipElement = ref<HTMLElement>();
 const popperInstance = ref<Instance>();
 
 /**
+ * Get current placement of the tooltip
+ */
+const placementState = ref(props.placement);
+
+/**
+ * List of transform directions for slide
+ * animation
+ */
+const transformMap = {
+  top: 'translateY(-7px)',
+  bottom: 'translateY(7px)',
+  left: 'translateX(-7px)',
+  right: 'translateX(7px)',
+};
+
+/**
+ * Get the transform value of the tooltip for slide animation
+ */
+const getSlideTransform = computed(() => {
+  if (transformMap[placementState.value] !== undefined) {
+    return transformMap[placementState.value];
+  }
+  return 'translate(0, 0)';
+});
+
+/**
+ * Get the animation class
+ */
+const getTransitionNames = computed(() => {
+  const { animation } = props;
+
+  if (animation === 'fade') {
+    return {
+      outer: 'fade',
+      inner: '',
+    };
+  }
+
+  if (animation === 'fade-slide') {
+    return {
+      outer: 'fade',
+      inner: 'slide',
+    };
+  }
+
+  return {
+    outer: '',
+    inner: '',
+  };
+});
+
+/**
+ * Get the animation duration in seconds
+ */
+const getTransitionDuration = computed(() => {
+  return props.animationDuration / 1000 + 's';
+});
+
+/**
  * Handle the opening of the tooltip with delay
  */
 const openWithDelay = useDebounceFn(() => {
+  placementState.value = popperInstance.value?.state.placement;
+
   isOpened.value = true;
 }, props.openDelay);
 
@@ -317,52 +401,46 @@ defineExpose({
   display: inline-block;
 }
 
-.popper-content {
-  background: var(--vue-popper-bg, #fff);
-  z-index: var(--vue-popper-zindex, 1000);
-  box-shadow: var(
-    --vue-popper-shadow,
-    0 0 20px 4px rgb(154 161 177 / 15%),
-    0 4px 80px -8px rgb(36 40 47 / 25%),
-    0 4px 4px -2px rgb(91 94 105 / 15%)
-  );
-  padding: var(--vue-popper-padding, 0em);
-  border-radius: var(--vue-popper-border-radius, 6px);
-  color: var(--vue-popper-text-color, #000);
-  border: var(--vue-popper-border, 0px solid transparent);
+.popper-content-wrapper {
+  z-index: 20;
 
-  &[data-popper-placement^='top'] > [data-popper-arrow] {
+  &[data-popper-placement^='top'] > .popper-content > [data-popper-arrow] {
     bottom: -4px;
   }
 
-  &[data-popper-placement^='bottom'] > [data-popper-arrow] {
+  &[data-popper-placement^='bottom'] > .popper-content > [data-popper-arrow] {
     top: -4px;
   }
 
-  &[data-popper-placement^='left'] > [data-popper-arrow] {
+  &[data-popper-placement^='left'] > .popper-content > [data-popper-arrow] {
     right: -4px;
   }
 
-  &[data-popper-placement^='right'] > [data-popper-arrow] {
+  &[data-popper-placement^='right'] > .popper-content > [data-popper-arrow] {
     left: -4px;
   }
-}
 
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s;
-}
-
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
+  .popper-content {
+    background: var(--vue-popper-bg, #fff);
+    z-index: var(--vue-popper-zindex, 1000);
+    box-shadow: var(
+      --vue-popper-shadow,
+      0 0 20px 4px rgb(154 161 177 / 15%),
+      0 4px 80px -8px rgb(36 40 47 / 25%),
+      0 4px 4px -2px rgb(91 94 105 / 15%)
+    );
+    padding: var(--vue-popper-padding, 0em);
+    border-radius: var(--vue-popper-border-radius, 6px);
+    color: var(--vue-popper-text-color, #000);
+    border: var(--vue-popper-border, 0px solid transparent);
+  }
 }
 
 [data-popper-arrow] {
   position: absolute;
   width: 8px;
   height: 8px;
-  background: inherit;
+  background: var(--vue-popper-bg, #fff);
   visibility: hidden;
 
   &::before {
@@ -370,9 +448,39 @@ defineExpose({
     position: absolute;
     width: 8px;
     height: 8px;
-    background: inherit;
+    background: var(--vue-popper-bg, #fff);
     visibility: visible;
     transform: rotate(45deg);
   }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity v-bind(getTransitionDuration);
+}
+
+.fade-leave-from,
+.fade-enter-to {
+  opacity: 1;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.slide-enter-active,
+.slide-leave-active {
+  transition: all v-bind(getTransitionDuration);
+}
+
+.slide-leave-form,
+.slide-enter-to {
+  transform: translateX(0);
+}
+
+.slide-enter-from,
+.slide-leave-to {
+  transform: v-bind(getSlideTransform);
 }
 </style>
