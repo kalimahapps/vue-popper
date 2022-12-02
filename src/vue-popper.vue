@@ -115,7 +115,7 @@ const props = defineProps({
    */
   placement: {
     type: String as PropType<Placement>,
-    default: 'right',
+    default: 'top',
   },
 
   /**

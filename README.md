@@ -101,7 +101,7 @@ app.component('VuePopper', VuePopper).mount('#app');
 | open-delay            | `0`          | How many milliseconds to wait before opening the tooltip                                  |
 | close-delay           | `0`          | How many milliseconds to wait before closing the tooltip                                  |
 | interactive           | `false`      | Whether to interact with tooltip when hover is true                                       |
-| placement             | `bottom`     | The placement of the tooltip.                                                             |
+| placement             | `top`        | The placement of the tooltip.                                                             |
 | strategy              | `absolute`   | The strategy to use to position the tooltip. Can be absolute or fixed.                    |
 | modifiers             | `[]`         | The modifiers to override the default modifies.                                           |
 | animation             | `fade-slide` | The animation to use when showing the tooltip.  <br> accepts `fade-slide`, `fade`, `none` |
@@ -115,7 +115,7 @@ These are the default popper options that will be passed to the component. If yo
 
 ```js
 {
-  placement: 'bottom',
+  placement: 'top',
   modifiers: [
     {
       name: 'offset',
@@ -191,6 +191,9 @@ To style the tooltip, you can customize the following css variables:
 <br>
 
 ## 🧮 Version History
+- 1.0.8
+    - Added animation and animation-duration props
+  
 - 1.0.4
   - Add popper options as individual props and deprecate the popperOptions prop
   - Fix nested tooltip bug
