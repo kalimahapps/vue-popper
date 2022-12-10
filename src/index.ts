@@ -1,3 +1,3 @@
-import VuePopper from "./vue-popper.vue";
 
-export default VuePopper;
+export { default } from './VuePopper.vue';
+export { useVuePopper } from './composable';

@@ -1,0 +1,139 @@
+.popper-container {
+	display: inline-block;
+}
+
+.popper-content-wrapper {
+	z-index: 20;
+
+	&[data-popper-placement^='top'] > .popper-content > [data-popper-arrow] {
+		bottom: -4px;
+	}
+
+	&[data-popper-placement^='bottom'] > .popper-content > [data-popper-arrow] {
+		top: -4px;
+	}
+
+	&[data-popper-placement^='left'] > .popper-content > [data-popper-arrow] {
+		right: -4px;
+	}
+
+	&[data-popper-placement^='right'] > .popper-content > [data-popper-arrow] {
+		left: -4px;
+	}
+
+	.popper-content {
+		background: var(--vue-popper-bg, #fff);
+		z-index: var(--vue-popper-zindex, 1000);
+		box-shadow: var(
+			--vue-popper-shadow,
+			0 0 20px 4px rgb(154 161 177 / 15%),
+			0 4px 80px -8px rgb(36 40 47 / 25%),
+			0 4px 4px -2px rgb(91 94 105 / 15%)
+		);
+		padding: var(--vue-popper-padding, 0em);
+		border-radius: var(--vue-popper-border-radius, 6px);
+		color: var(--vue-popper-text-color, #000);
+		border: var(--vue-popper-border, 0px solid transparent);
+	}
+}
+
+[data-popper-arrow] {
+	position: absolute;
+	width: 8px;
+	height: 8px;
+	background: var(--vue-popper-bg, #fff);
+	visibility: hidden;
+
+	&::before {
+		content: '';
+		position: absolute;
+		width: 8px;
+		height: 8px;
+		background: var(--vue-popper-bg, #fff);
+		visibility: visible;
+		transform: rotate(45deg);
+	}
+}
+
+.fade-enter-active {
+	transition: opacity var(--vue-popper-enter-duration, 0.3s);
+}
+
+.fade-leave-active {
+	transition: opacity var(--vue-popper-leave-duration, 0.3s);
+}
+
+.fade-leave-from,
+.fade-enter-to {
+	opacity: 1;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+	opacity: 0;
+}
+
+/**
+ * Shift in
+ */
+.shift-in-enter-active {
+	transition: transform var(--vue-popper-enter-duration, 0.3s);
+}
+
+.shift-in-leave-active {
+	transition: transform var(--vue-popper-leave-duration, 0.3s);
+}
+
+.shift-in-leave-form,
+.shift-in-enter-to {
+	transform: translate(0, 0);
+}
+
+.shift-in-enter-from,
+.shift-in-leave-to {
+	transform: var(--vue-popper-shift-transform);
+}
+
+/**
+ * Shift Out animation
+ * Enter/leave properties are handled by JS hooks to avoid flickering
+ */
+.shift-out-enter-active {
+	transition: transform var(--vue-popper-enter-duration, 0.3s);
+}
+
+.shift-out-leave-active {
+	transition: transform var(--vue-popper-leave-duration, 0.3s);
+}
+
+@keyframes shift-out {
+	0% {
+		transform: translate(0, 0);
+	}
+	100% {
+		transform: var(--vue-popper-shift-transform);
+	}
+}
+
+/**
+ * Scale animation
+ */
+.scale-enter-active {
+	transition: transform var(--vue-popper-enter-duration, 0.3s);
+	transform-origin: var(--vue-popper-scale-transform-origin, center center);
+}
+
+.scale-leave-active {
+	transition: transform var(--vue-popper-leave-duration, 0.3s);
+	transform-origin: var(--vue-popper-scale-transform-origin, center center);
+}
+
+.scale-enter-from,
+.scale-leave-to {
+	transform: scale(0);
+}
+
+.scale-leave-form,
+.scale-enter-to {
+	transform: scale(1);
+}
