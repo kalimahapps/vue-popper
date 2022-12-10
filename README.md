@@ -91,19 +91,19 @@ app.component('VuePopper', VuePopper).mount('#app');
 
 ## 🪛 Props
 
-| Name                  | Default      | Description                                                                                                     |
-| --------------------- | ------------ | --------------------------------------------------------------------------------------------------------------- |
-| show-arrow            | `true`       | Whether to show the arrow                                                                                       |
-| hover                 | `false`      | Trigger element on hover                                                                                        |
-| disable-click-outside | `false`      | Disable clicking outside to close                                                                               |
-| open-delay            | `0`          | How many milliseconds to wait before opening the tooltip                                                        |
-| close-delay           | `0`          | How many milliseconds to wait before closing the tooltip                                                        |
-| interactive           | `false`      | Whether to interact with tooltip when hover is true                                                             |
-| placement             | `top`        | The placement of the tooltip.                                                                                   |
-| strategy              | `absolute`   | The strategy to use to position the tooltip. Can be absolute or fixed.                                          |
-| modifiers             | `[]`         | The modifiers to override the default modifies.                                                                 |
-| animation             | `fade-slide` | The animation to use when showing the tooltip. <br> accepts `none`, `shift-in`, `shift-out`, `scale`, or CUSTOM |
-| animation-duration    | `300`        | The duration of the animation in milliseconds.                                                                  |
+| Name                  | Default    | Description                                                                                                     |
+| --------------------- | ---------- | --------------------------------------------------------------------------------------------------------------- |
+| show-arrow            | `true`     | Whether to show the arrow                                                                                       |
+| hover                 | `false`    | Trigger element on hover                                                                                        |
+| disable-click-outside | `false`    | Disable clicking outside to close                                                                               |
+| open-delay            | `0`        | How many milliseconds to wait before opening the tooltip                                                        |
+| close-delay           | `0`        | How many milliseconds to wait before closing the tooltip                                                        |
+| interactive           | `false`    | Whether to interact with tooltip when hover is true                                                             |
+| placement             | `top`      | The placement of the tooltip.                                                                                   |
+| strategy              | `absolute` | The strategy to use to position the tooltip. Can be absolute or fixed.                                          |
+| modifiers             | `[]`       | The modifiers to override the default modifies.                                                                 |
+| animation             | `shift-in` | The animation to use when showing the tooltip. <br> accepts `none`, `shift-in`, `shift-out`, `scale`, or CUSTOM |
+| animation-duration    | `300`      | The duration of the animation in milliseconds.                                                                  |
 
 <br>
 <br>
