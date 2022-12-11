@@ -334,11 +334,27 @@ const useVuePopper = function (suppliedOptions: Options = {}) {
 	 * Get the transform value of the tooltip for slide animation
 	 */
 	const getShiftTransform = computed(() => {
-		return shiftMap[placementState.value] ?? 'translate(0, 0)';
+		const getTransform = Object.keys(shiftMap).find((key) => {
+			return placementState.value.startsWith(key);
+		});
+
+		if (getTransform === undefined) {
+			return 'translate(0, 0)';
+		}
+
+		return shiftMap[getTransform];
 	});
 
 	const getScaleOrigin = computed(() => {
-		return transformOriginMap[placementState.value] ?? 'center center';
+		const getScale = Object.keys(transformOriginMap).find((key) => {
+			return placementState.value.startsWith(key);
+		});
+
+		if (getScale === undefined) {
+			return 'center center';
+		}
+
+		return transformOriginMap[getScale];
 	});
 
 	const createTooltipStyle = computed(() => {
