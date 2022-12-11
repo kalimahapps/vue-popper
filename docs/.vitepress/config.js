@@ -12,6 +12,7 @@ export default {
 		nav: [
 			{ text: "Guide", link: "/guide/overview" },
 			{ text: "Changelog", link: "/changelog" },
+			{ text: "Links", link: "/links" },
 		],
 		sidebar: [
 			{
