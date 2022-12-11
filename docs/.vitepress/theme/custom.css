@@ -1,0 +1,6 @@
+:root {
+	--vue-popper-padding: 0.3em 0.6em;
+	--vue-popper-bg: rgb(32, 32, 32);
+	--vue-popper-text-color: rgb(255, 255, 255);
+}
+

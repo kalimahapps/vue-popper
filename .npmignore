@@ -7,3 +7,4 @@ LICENSE_HEADER
 coverage/
 .vscode
 /src/test
+/docs
