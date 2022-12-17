@@ -1,6 +1,6 @@
 <template>
 	<div class="grid">
-		<VuePopper v-for="animation in animations" :text="animation" />
+		<VuePopper v-for="animation in animations" :text="animation" :animation="animation"/>
 	</div>
 </template>
 
