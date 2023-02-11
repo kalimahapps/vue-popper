@@ -1,14 +1,14 @@
 {
   "name": "@kalimahapps/vue-popper",
   "description": "vue3 tooltip component based on popperjs",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "sideEffects": false,
   "repository": {
     "type": "git",
-    "url": "https://github.com/kalimah-apps/vue-popper.git"
+    "url": "https://github.com/kalimahapps/vue-popper.git"
   },
   "bugs": {
-    "url": "https://github.com/kalimah-apps/vue-popper/issues"
+    "url": "https://github.com/kalimahapps/vue-popper/issues"
   },
   "homepage": "https://vue-popper.kalimah-apps.com/docs/",
   "scripts": {
