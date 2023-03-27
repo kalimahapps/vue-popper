@@ -30,7 +30,7 @@ Vue3 popper component
 
 ## 🏗️ Other projects
 ### [Vue Icons](https://www.npmjs.com/package/@kalimahapps/vue-icons)
-55,000+ SVG icons from popular icon sets that you can add seamlessly to your vue projects
+60,000+ SVG icons from popular icon sets that you can add seamlessly to your vue projects
 
 ### [Vite inherit attrs](https://www.npmjs.com/package/vite-plugin-vue-setup-inherit-attrs)
 A vite plugin that adds support for inheritAttrs in vue-setup
