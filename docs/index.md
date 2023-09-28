@@ -15,6 +15,10 @@ hero:
     - theme: alt
       text: View on NPM
       link: https://www.npmjs.com/package/@kalimahapps/vue-popper
+  image:
+    src: /logo.svg
+    alt: VuePopper
+
 features:
   - icon: ⚡️
     title: Composition and Component API

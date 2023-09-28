@@ -1,5 +1,7 @@
 <h1 align="center">VuePopper</h1>
 
+<img src="https://raw.githubusercontent.com/kalimah-apps/vue-popper/master/logo.svg" width="120" alt="Vue Icons">
+
 <p align="center">
 Vue3 popper component
 </p>

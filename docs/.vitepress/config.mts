@@ -1,8 +1,12 @@
-export default {
+import { defineConfig } from 'vitepress'
+
+// https://vitepress.dev/reference/site-config
+export default defineConfig({
 	title: "Documentation",
 	description: "Documentation for VuePopper Dashboard",
 	base: "/docs/",
 	themeConfig: {
+		logo: './logo.svg',
 		siteTitle: "VuePopper",
 		outline: 'deep',
 		socialLinks: [
@@ -76,4 +80,4 @@ export default {
 			message: "Released under the MIT License.",
 		},
 	},
-};
+});

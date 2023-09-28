@@ -1,42 +1,28 @@
 <template>
 	<div class="grid">
-		<VuePopper
-			v-for="placement in topPlacements"
-			:text="placement"
-			:placement="placement"
-		/>
+		<VuePopper v-for="placement in topPlacements" :text="placement" :placement="placement" />
 	</div>
+
 	<div class="grid-position-vertical">
 		<div>
-			<VuePopper
-				v-for="placement in leftPlacements"
-				:text="placement"
-				:placement="placement"
-			/>
+			<VuePopper v-for="placement in leftPlacements" :text="placement" :placement="placement" />
 		</div>
 
 		<div>
-			<VuePopper
-				v-for="placement in rightPlacements"
-				:text="placement"
-				:placement="placement"
-			/>
+			<VuePopper v-for="placement in rightPlacements" :text="placement" :placement="placement" />
 		</div>
 	</div>
+
 	<div class="grid">
-		<VuePopper
-			v-for="placement in bottomPlacements"
-			:text="placement"
-			:placement="placement"
-		/>
+		<VuePopper v-for="placement in bottomPlacements" :text="placement" :placement="placement" />
 	</div>
 </template>
 
 <script setup lang="ts">
-const topPlacements = ["top-start", "top", "top-end"];
-const leftPlacements = ["left-start", "left", "left-end"];
-const rightPlacements = ["right-start", "right", "right-end"];
-const bottomPlacements = ["bottom-start", "bottom", "bottom-end"];
+const topPlacements = ['top-start', 'top', 'top-end'];
+const leftPlacements = ['left-start', 'left', 'left-end'];
+const rightPlacements = ['right-start', 'right', 'right-end'];
+const bottomPlacements = ['bottom-start', 'bottom', 'bottom-end'];
 </script>
 
 <style lang="scss" scoped>
@@ -59,7 +45,7 @@ const bottomPlacements = ["bottom-start", "bottom", "bottom-end"];
 	grid-gap: 16em;
 	margin-bottom: 1em;
 
-	> div {
+	>div {
 		display: grid;
 		grid-template-rows: repeat(3, 1fr);
 	}

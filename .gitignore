@@ -14,11 +14,8 @@ dist-ssr
 coverage
 *.local
 
-/cypress/videos/
-/cypress/screenshots/
-
-/coverage.data
-/coverage/
+docs/.vitepress/dist
+docs/.vitepress/cache
 
 # Editor directories and files
 .vscode/*
