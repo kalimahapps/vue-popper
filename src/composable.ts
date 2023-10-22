@@ -544,6 +544,7 @@ const useVuePopper = function (suppliedOptions: Options = {}) {
 		triggerElement,
 		tooltipElement,
 		popperInstance,
+		toggleTooltip,
 		isOpened: computed(() => { return isOpened.value; }),
 	};
 };

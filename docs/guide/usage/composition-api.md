@@ -14,7 +14,8 @@ const VuePopperOptions = {
 const {
 	popperInstance,
 	triggerElement,
-	tooltipElement
+	tooltipElement,
+	toggleTooltip
 } = useVuePopper(VuePopperOptions);
 </script>
 ```
@@ -23,6 +24,7 @@ As you notice, the `useVuePopper` returns an object with three properties:
 - `popperInstance`: The popper instance. It will give you access to the popper instance.
 - `triggerElement`: The trigger element. Use this to add the trigger element.
 - `tooltipElement`: The tooltip element. Use this to add the tooltip element.
+- `toggleTooltip`: A function to toggle the tooltip visibility. Optionally pass a value of ('hide' or 'show') to force the tooltip to hide or show.
 
 We can use these in template to add the trigger and tooltip elements. Like this:
 

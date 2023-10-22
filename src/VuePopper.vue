@@ -154,7 +154,7 @@ if (Object.keys(props.popperOptions).length > 0) {
 	console.warn('@kalimahapps/vue-popper: popperOptions is deprecated. Use the individual props instead.');
 }
 
-const { popperInstance, triggerElement, tooltipElement, isOpened } = useVuePopper({
+const { popperInstance, triggerElement, tooltipElement, isOpened, toggleTooltip } = useVuePopper({
 	hover: props.hover,
 	disableClickOutside: props.disableClickOutside,
 	openDelay: props.openDelay,
@@ -183,5 +183,6 @@ defineExpose({
 	isOpened: computed(() => {
 		return isOpened.value;
 	}),
+	toggleTooltip,
 });
 </script>
