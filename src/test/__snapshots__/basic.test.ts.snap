@@ -1,11 +1,15 @@
-// Vitest Snapshot v1
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`VuePopper > should render correctly 1`] = `
-"<div class=\\"popper-container\\">
-  <div aria-describedby=\\"tooltip\\" class=\\"trigger-element\\"></div>
-  <transition-stub name=\\"fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
-    <div class=\\"popper-content\\" role=\\"tooltip\\" style=\\"display: none; position: absolute; left: 0px; top: 0px; margin: 0px;\\">
-      <div data-popper-arrow=\\"true\\" style=\\"position: absolute;\\"></div>
+"<div class="popper-container">
+  <div class="trigger-element" ariadescribedby="tooltip"></div>
+  <transition-stub name="fade" appear="false" persisted="false" css="true">
+    <div class="popper-content-wrapper" style="display: none; position: absolute; left: 0px; top: 0px; margin: 0px;">
+      <transition-stub name="shift-in" appear="false" persisted="false" css="true" data-placement="top" data-name="shift-in">
+        <div class="popper-content" style="display: none;">
+          <div data-popper-arrow="true" style="display: block;"></div>
+        </div>
+      </transition-stub>
     </div>
   </transition-stub>
 </div>"

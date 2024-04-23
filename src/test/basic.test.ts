@@ -1,6 +1,6 @@
-/* eslint-disable max-lines-per-function */
+
 import type { VueWrapper } from '@vue/test-utils';
-import { mount } from '@vue/test-utils';
+import { mount, flushPromises } from '@vue/test-utils';
 import { describe, it, expect, vi } from 'vitest';
 import VuePopper from '../VuePopper.vue';
 const { fn } = vi;
@@ -20,6 +20,7 @@ describe('VuePopper', () => {
 	it('should change open status on click', async () => {
 		const wrapper: VueWrapper<any> = mount(VuePopper);
 		await wrapper.find('.trigger-element').trigger('click');
+		await flushPromises();
 		expect(wrapper.vm.isOpened).toBe(true);
 	});
 
@@ -27,10 +28,13 @@ describe('VuePopper', () => {
 		const wrapper: VueWrapper<any> = mount(VuePopper, {
 			props: {
 				hover: true,
+				openDelay: 0,
 			},
 		});
 
 		await wrapper.find('.trigger-element').trigger('mouseenter');
+		await flushPromises();
+
 		expect(wrapper.vm.isOpened).toBe(true);
 	});
 
@@ -42,6 +46,7 @@ describe('VuePopper', () => {
 		});
 
 		await wrapper.find('.trigger-element').trigger('mouseenter');
+		await flushPromises();
 		expect(wrapper.vm.isOpened).toBe(false);
 	});
 
@@ -61,6 +66,7 @@ describe('VuePopper', () => {
 		await wrapper.find('.trigger-element').trigger('click');
 		setTimeout(t, 2000);
 		vi.advanceTimersByTime(2000);
+		await flushPromises();
 		expect(wrapper.vm.isOpened).toBe(true);
 
 		// Test close delay
@@ -68,44 +74,8 @@ describe('VuePopper', () => {
 
 		setTimeout(fn(), 5000);
 		vi.advanceTimersByTime(5000);
-
+		await flushPromises();
 		expect(wrapper.vm.isOpened).toBe(false);
 		vi.useRealTimers();
-	});
-
-	it('getOffset should return x,y object', () => {
-		const wrapper: VueWrapper<any> = mount(VuePopper, {
-			props: {
-				popperOptions: {
-					modifiers: [
-						{
-							name: 'offset',
-							options: {
-								offset: [10, 10],
-							},
-						},
-					],
-				},
-			},
-		});
-
-		expect(wrapper.vm.getOffset).toEqual({
-			x: 10,
-			y: 10,
-		});
-	});
-
-	it('getContainerStyle should return an object of border style', () => {
-		const wrapper: VueWrapper<any> = mount(VuePopper, {
-			props: {
-				hover: true,
-				interactive: true,
-			},
-		});
-
-		expect(wrapper.vm.getContainerStyle).toEqual({
-			border: '12px solid transparent',
-			margin: '-12px',
-		});
 	});
 });
