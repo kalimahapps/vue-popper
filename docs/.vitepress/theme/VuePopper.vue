@@ -7,7 +7,9 @@
 		<template #content>
 			<div>
 				<div class="tooltip-text">
-					<slot name="default"> Hi, from vue-popper! 🍿</slot>
+					<slot name="default">
+						Hi, from vue-popper! 🍿
+					</slot>
 				</div>
 			</div>
 		</template>
@@ -15,12 +17,12 @@
 </template>
 
 <script setup lang="ts">
-import VuePopperComponent from "@kalimahapps/vue-popper";
+import VuePopperComponent from '@kalimahapps/vue-popper';
 
 defineProps({
 	text: {
 		type: String,
-		default: "Button",
+		default: 'Button',
 	},
 });
 </script>

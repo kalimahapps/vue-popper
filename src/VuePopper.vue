@@ -16,7 +16,7 @@ import { computed } from 'vue';
 import type { PositioningStrategy, Placement, Modifier } from '@popperjs/core';
 import { useVuePopper } from './composable';
 
-const props = defineProps({
+const properties = defineProps({
 	/**
 	 * Trigger element on hover
 	 */
@@ -150,22 +150,22 @@ const props = defineProps({
 const emit = defineEmits(['opened', 'closed', 'transition']);
 
 // Deprecate popperOptions in favor of multiple props
-if (Object.keys(props.popperOptions).length > 0) {
+if (Object.keys(properties.popperOptions).length > 0) {
 	console.warn('@kalimahapps/vue-popper: popperOptions is deprecated. Use the individual props instead.');
 }
 
 const { popperInstance, triggerElement, tooltipElement, isOpened, toggleTooltip } = useVuePopper({
-	hover: props.hover,
-	disableClickOutside: props.disableClickOutside,
-	openDelay: props.openDelay,
-	closeDelay: props.closeDelay,
-	showArrow: props.showArrow,
-	strategy: props.strategy,
-	modifiers: props.modifiers,
-	animation: props.animation,
-	placement: props.placement,
-	interactive: props.interactive,
-	animationDuration: props.animationDuration,
+	hover: properties.hover,
+	disableClickOutside: properties.disableClickOutside,
+	openDelay: properties.openDelay,
+	closeDelay: properties.closeDelay,
+	showArrow: properties.showArrow,
+	strategy: properties.strategy,
+	modifiers: properties.modifiers,
+	animation: properties.animation,
+	placement: properties.placement,
+	interactive: properties.interactive,
+	animationDuration: properties.animationDuration,
 
 	onTransition: (transition: string, element: HTMLElement) => {
 		emit('transition', transition, element);

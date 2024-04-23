@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-const animations = ["fade", "shift-in", "shift-out", "scale"];
+const animations = ['fade', 'shift-in', 'shift-out', 'scale'];
 const durations = [
 	[0, 200],
 	[300, 1000],

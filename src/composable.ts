@@ -48,9 +48,9 @@ const popperDefaultOptions = {
 /**
  * Generate a css text from style object
  *
- * @param  {object} style List of style properties
- * @param  {object} extra Extra style properties
- * @return {string}       Css string
+ * @param   {object} style List of style properties
+ * @param   {object} extra Extra style properties
+ * @returns {string}       Css string
  */
 const createCssText = function (style: object = {}, extra: object = {}): string {
 	const combined = {
@@ -253,11 +253,11 @@ const useVuePopper = function (suppliedOptions: Options = {}) {
 	/**
 	 * Build trigger element
 	 *
-	 * @param  {object}       props   Props passed to the component
-	 * @param  {SetupContext} context Context passed to the component
-	 * @return {VNode}                Trigger element
+	 * @param   {object}       props   Props passed to the component
+	 * @param   {SetupContext} context Context passed to the component
+	 * @returns {VNode}                Trigger element
 	 */
-	const triggerElement = function (props: object, context: SetupContext): VNode {
+	const triggerElement = function (properties: object, context: SetupContext): VNode {
 		const { slots } = context;
 		return h('div',
 			{
@@ -383,11 +383,11 @@ const useVuePopper = function (suppliedOptions: Options = {}) {
 	/**
 	 * Build tooltip element
 	 *
-	 * @param  {object}       props   Props passed to the component
-	 * @param  {SetupContext} context Context passed to the component
-	 * @return {VNode}                Tooltip element
+	 * @param   {object}       props   Props passed to the component
+	 * @param   {SetupContext} context Context passed to the component
+	 * @returns {VNode}                Tooltip element
 	 */
-	const tooltipElement = function (props: object, context: SetupContext): VNode {
+	const tooltipElement = function (properties: object, context: SetupContext): VNode {
 		const { slots } = context;
 		return h(Transition,
 			{ name: getTransitionNames.value.outer },

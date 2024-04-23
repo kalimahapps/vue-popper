@@ -1,11 +1,11 @@
 <template>
 	<div class="grid">
-		<VuePopper v-for="animation in animations" :text="animation" :animation="animation"/>
+		<VuePopper v-for="animation in animations" :text="animation" :animation="animation" />
 	</div>
 </template>
 
 <script setup lang="ts">
-const animations = ["none", "fade", "shift-in", "shift-out", "scale"];
+const animations = ['none', 'fade', 'shift-in', 'shift-out', 'scale'];
 </script>
 
 <style scoped>
