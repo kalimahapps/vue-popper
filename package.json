@@ -1,8 +1,9 @@
 {
   "name": "@kalimahapps/vue-popper",
   "description": "vue3 tooltip component based on popperjs",
-  "version": "1.1.9",
-  "sideEffects": false,
+  "author": "khr2003",
+  "version": "1.2.0",
+  "homepage": "https://vue-popper.kalimah-apps.com/docs/",
   "repository": {
     "type": "git",
     "url": "https://github.com/kalimahapps/vue-popper.git"
@@ -10,48 +11,40 @@
   "bugs": {
     "url": "https://github.com/kalimahapps/vue-popper/issues"
   },
-  "homepage": "https://vue-popper.kalimah-apps.com/docs/",
-  "scripts": {
-    "dev": "vite",
-    "build": "run-p type-check build-only",
-    "test": "vitest",
-    "update:snapshots": "vitest -u",
-    "coverage": "vitest run --coverage",
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
-  },
-  "exports": {
-    ".": {
-      "import": "./src/index.ts"
-    }
-  },
-  "author": "khr2003",
   "license": "MIT",
+  "scripts": {
+    "build": "run-p type-check build-only",
+    "coverage": "vitest run --coverage",
+    "dev": "vite",
+    "docs:build": "vitepress build docs",
+    "docs:dev": "vitepress dev docs",
+    "docs:preview": "vitepress preview docs",
+    "test": "vitest",
+    "update:snapshots": "vitest -u"
+  },
   "dependencies": {
+    "@kalimahapps/eslint-config": "^1.2.0",
     "@popperjs/core": "^2.11.8",
-    "@vueuse/core": "^10.4.1"
+    "@vueuse/core": "^10.9.0"
   },
   "devDependencies": {
-    "@kalimahapps/eslint-config": "^1.1.7",
-    "@rushstack/eslint-patch": "^1.5.0",
-    "@types/node": "^20.7.1",
-    "@vitejs/plugin-vue": "^4.3.4",
+    "@types/node": "^20.12.7",
+    "@vitejs/plugin-vue": "^5.0.4",
     "@vitest/coverage-c8": "^0.33.0",
+    "@vitest/coverage-v8": "^1.5.0",
     "@vue/eslint-config-typescript": "^12.0.0",
-    "@vue/test-utils": "^2.4.1",
+    "@vue/test-utils": "^2.4.5",
     "@vue/tsconfig": "^0.1.3",
-    "eslint": "^8.50.0",
-    "eslint-plugin-vue": "^9.17.0",
+    "eslint": "^9.1.1",
     "jsdom": "^22.1.0",
     "npm-run-all": "^4.1.5",
-    "sass": "^1.68.0",
-    "typescript": "4.9.4",
-    "vite": "^4.4.9",
-    "vitepress": "1.0.0-rc.20",
-    "vitest": "^0.25.8",
-    "vue": "^3.3.4",
-    "vue-tsc": "^1.8.15"
+    "sass": "^1.75.0",
+    "typescript": "5.4.5",
+    "vite": "^5.2.10",
+    "vitepress": "1.1.3",
+    "vitest": "^1.5.0",
+    "vue": "^3.4.24",
+    "vue-tsc": "^2.0.14"
   },
   "keywords": [
     "vue",
@@ -65,6 +58,12 @@
     "dropdown-tooltip",
     "popover-tooltip"
   ],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "import": "./src/index.ts"
+    }
+  },
   "engines": {
     "node": ">=14.0.0"
   }
