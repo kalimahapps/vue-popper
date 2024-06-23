@@ -12,6 +12,7 @@ type Options = {
 	animationDuration?: number | number[];
 	popperOptions?: object;
 	modifiers?: Modifier<any, any>[];
+	element?: string;
 	onOpened?: () => void;
 	onClosed?: () => void;
 	onTransition?: (transition: string, element: HTMLElement) => void;

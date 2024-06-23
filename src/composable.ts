@@ -42,7 +42,7 @@ const popperDefaultOptions = {
 			name: 'arrow',
 			options: { element: ':scope > .popper-content > [data-popper-arrow]' },
 		},
-	],
+	] as Partial<Modifier<string, ModifierOptions & {element?: string}>>[],
 };
 
 /**
@@ -165,7 +165,10 @@ const useVuePopper = function (suppliedOptions: Options = {}) {
 	const getPopperOptions = computed(() => {
 		let { modifiers } = popperDefaultOptions;
 		if (options.modifiers) {
-			modifiers = [...modifiers, ...options.modifiers];
+			modifiers = [
+				...modifiers, 
+				...options.modifiers
+			];
 		}
 
 		return {
@@ -191,7 +194,7 @@ const useVuePopper = function (suppliedOptions: Options = {}) {
 	 */
 	const openWithDelay = useDebounceFn(async () => {
 		const updated = await popperInstance.value?.update();
-		placementState.value = updated?.placement || options.placement;
+		placementState.value = updated?.placement || options.placement || 'top';
 		isOpened.value = true;
 	}, options.openDelay);
 
@@ -302,7 +305,7 @@ const useVuePopper = function (suppliedOptions: Options = {}) {
 
 		return {
 			outer: 'fade',
-			inner: animationName,
+			inner: animationName!,
 		};
 	});
 
@@ -338,11 +341,11 @@ const useVuePopper = function (suppliedOptions: Options = {}) {
 			return placementState.value.startsWith(key);
 		});
 
-		if (getTransform === undefined) {
+		if (getTransform !== undefined) {
+			return shiftMap[getTransform as keyof typeof shiftMap];
+		} else {
 			return 'translate(0, 0)';
 		}
-
-		return shiftMap[getTransform];
 	});
 
 	const getScaleOrigin = computed(() => {
@@ -350,11 +353,11 @@ const useVuePopper = function (suppliedOptions: Options = {}) {
 			return placementState.value.startsWith(key);
 		});
 
-		if (getScale === undefined) {
+		if (getScale !== undefined) {
+			return transformOriginMap[getScale as keyof typeof transformOriginMap];
+		} else {
 			return 'center center';
 		}
-
-		return transformOriginMap[getScale];
 	});
 
 	const createTooltipStyle = computed(() => {
@@ -420,49 +423,49 @@ const useVuePopper = function (suppliedOptions: Options = {}) {
 										'data-placement': placementState.value,
 										'data-name': getTransitionNames.value.inner,
 
-										onBeforeEnter(element: HTMLElement) {
-											onTransitionCallback('before-enter', element);
+										onBeforeEnter(element) {
+											onTransitionCallback('before-enter', element as HTMLElement);
 										},
 
-										onEnter(element: HTMLElement) {
+										onEnter(element) {
 											if (getTransitionNames.value.inner === 'shift-out') {
-												element.style.animation = `shift-out ${getTransitionDuration.value.enter}`;
+												(element as HTMLElement).style.animation = `shift-out ${getTransitionDuration.value.enter}`;
 											}
 
-											onTransitionCallback('enter', element);
+											onTransitionCallback('enter', element as HTMLElement);
 										},
 
-										onAfterEnter(element: HTMLElement) {
+										onAfterEnter(element) {
 											if (getTransitionNames.value.inner === 'shift-out') {
-												element.style.transform = getShiftTransform.value;
+												(element as HTMLElement).style.transform = getShiftTransform.value;
 											}
 
-											onTransitionCallback('after-enter', element);
+											onTransitionCallback('after-enter', element as HTMLElement);
 										},
 
-										onBeforeLeave(element: HTMLElement) {
+										onBeforeLeave(element) {
 											if (getTransitionNames.value.inner === 'shift-out') {
-												element.style.transform = getShiftTransform.value;
-												element.style.animation = '';
+												(element as HTMLElement).style.transform = getShiftTransform.value;
+												(element as HTMLElement).style.animation = '';
 											}
 
-											onTransitionCallback('before-leave', element);
+											onTransitionCallback('before-leave', element as HTMLElement);
 										},
 
-										onLeave(element: HTMLElement) {
+										onLeave(element) {
 											if (getTransitionNames.value.inner === 'shift-out') {
-												element.style.transform = 'translate(0, 0)';
+												(element as HTMLElement).style.transform = 'translate(0, 0)';
 											}
 
-											onTransitionCallback('leave', element);
+											onTransitionCallback('leave', element as HTMLElement);
 										},
 
-										onAfterLeave(element: HTMLElement) {
+										onAfterLeave(element) {
 											if (getTransitionNames.value.inner === 'shift-out') {
-												element.style.transform = 'translate(0, 0)';
+												(element as HTMLElement).style.transform = 'translate(0, 0)';
 											}
 
-											onTransitionCallback('after-leave', element);
+											onTransitionCallback('after-leave', element as HTMLElement);
 										},
 									},
 									{
