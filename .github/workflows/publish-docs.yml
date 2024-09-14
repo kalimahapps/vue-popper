@@ -1,34 +1,35 @@
 name: Deploy to website
+
 on:
   push:
     branches: ["master"]
     paths: ["docs/**"]
-      
+
 jobs:
   web-deploy:
     name: Deploy
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2.5.0
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    - name: Setup Node.js environment
-      uses: actions/setup-node@master
+      - name: Setup Node.js environment
+        uses: actions/setup-node@master
 
-    - name: Setup pnpm and install dependcies
-      uses: pnpm/action-setup@v2.2.4
-      with:
-       version: latest
-       run_install: true
-     
-    - name: Building the project
-      run: pnpm docs:build
-    
-    - name: 📂 Sync files
-      uses: SamKirkland/FTP-Deploy-Action@4.3.3
-      with:
-        server: ${{ secrets.FTP_SERVER}}
-        username: ${{ secrets.FTP_ACCOUNT}}
-        password: ${{ secrets.FTP_PASSWORD}}
-        server-dir: "/vue-popper/docs/"
-        local-dir: "docs/.vitepress/dist/"
+      - name: Setup pnpm and install dependcies
+        uses: pnpm/action-setup@v4
+        with:
+          version: latest
+          run_install: true
+
+      - name: Building the project
+        run: pnpm docs:build
+
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@4.3.3
+        with:
+          server: ${{ secrets.FTP_SERVER}}
+          username: ${{ secrets.FTP_ACCOUNT}}
+          password: ${{ secrets.FTP_PASSWORD}}
+          server-dir: "/vue-popper/docs/"
+          local-dir: "docs/.vitepress/dist/"
