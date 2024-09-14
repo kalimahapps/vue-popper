@@ -124,7 +124,7 @@ const properties = defineProps({
 	 * Animation duration in milliseconds
 	 */
 	animationDuration: {
-		type: [Number, Array],
+		type: [Number, Array] as PropType<number | number[]>,
 		default: 300,
 		validator(value) {
 			if (Array.isArray(value)) {
